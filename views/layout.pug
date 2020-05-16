@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div.top-bar.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.box-shadow
+      h5.my-0.mr-md-auto.font-weight-normal
+        a(href="/", title="Enta Hub") Enta Hub
+      nav.my-2.my-md-0.mr-md-3
+        a.p-2.text-dark(href="/", title="Home") Home
+
+        if username 
+          a.p-2.text-dark(href="/users/logout") Logout        
+        else 
+          a.p-2.text-dark(href="/users/login") Sign In          
+               
+
+    if successes
+      for success in successes
+          div.alert.alert-success #{ success }
+    if errors
+        for error, i in errors
+          div.alert.alert-danger #{ error }
+    block content
